@@ -8,30 +8,23 @@ dynamic = ["version"]
 authors = [{ name = "LFV", email = "sysdev@lfv.se" }]
 description = "Hatch plugin to process reqstool-python-decorators when building with Hatch"
 readme = "README.md"
-
-homepage = "https://github.com/Luftfartsverket/reqstool-python-hatch-plugin.git"
-repository = "https://github.com/Luftfartsverket/reqstool-python-hatch-plugin.git"
-documentation = "https://github.com/Luftfartsverket/reqstool-python-hatch-plugin.git"
-
-urls.Source = 'https://github.com/Luftfartsverket/reqstool-python-hatch-plugin.git'
-
+requires-python = ">=3.10"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
     "Development Status :: 4 - Beta",
 ]
-
-
-requires-python = ">=3.10"
-
 dependencies = [
     "reqstool-python-decorators==0.0.9",
     "ruamel.yaml==0.19.1",
     "hatchling>=1.20.0",
 ]
 
-packages = [{ include = "reqstool_python_hatch_plugin", from = "src" }]
+[project.urls]
+Homepage = "https://reqstool.github.io"
+Source = "https://github.com/reqstool/reqstool-python-hatch-plugin.git"
+Documentation = "https://github.com/reqstool/reqstool-python-hatch-plugin.git"
 
 [project.entry-points.hatch]
 decorators = "reqstool_python_hatch_plugin.hooks"

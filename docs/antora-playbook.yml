@@ -2,7 +2,7 @@
 
 site:
   title: Reqstool Hatch Plugin Documentation
-  url: https://github.com/luftfartsverket/reqstool-python-hatch-plugin
+  url: https://github.com/reqstool/reqstool-python-hatch-plugin
   start_page: reqstool-python-hatch-plugin::index.adoc
 
 content:
