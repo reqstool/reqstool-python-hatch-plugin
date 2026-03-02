@@ -8,7 +8,7 @@ dynamic = ["version"]
 authors = [{ name = "reqstool" }]
 description = "Hatch plugin to process reqstool-python-decorators when building with Hatch"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
