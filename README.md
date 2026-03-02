@@ -1,9 +1,9 @@
 
-[![Commit Activity](https://img.shields.io/github/commit-activity/m/Luftfartsverket/reqstool-python-hatch-plugin?label=commits&style=for-the-badge)](https://github.com/Luftfartsverket/reqstool-python-hatch-plugin/pulse)
-[![GitHub Issues](https://img.shields.io/github/issues/Luftfartsverket/reqstool-python-hatch-plugin?style=for-the-badge&logo=github)](https://github.com/Luftfartsverket/reqstool-python-hatch-plugin/issues)
-[![License](https://img.shields.io/github/license/Luftfartsverket/reqstool-python-hatch-plugin?style=for-the-badge&logo=opensourceinitiative)](https://opensource.org/license/mit/)
-[![Build](https://img.shields.io/github/actions/workflow/status/Luftfartsverket/reqstool-python-hatch-plugin/build.yml?style=for-the-badge&logo=github)](https://github.com/Luftfartsverket/reqstool-python-hatch-plugin/actions/workflows/build.yml)
-[![Static Badge](https://img.shields.io/badge/Documentation-blue?style=for-the-badge&link=docs)](https://luftfartsverket.github.io/reqstool-python-hatch-plugin/reqstool-python-hatch-plugin/0.0.2/index.html)
+[![Commit Activity](https://img.shields.io/github/commit-activity/m/reqstool/reqstool-python-hatch-plugin?label=commits&style=for-the-badge)](https://github.com/reqstool/reqstool-python-hatch-plugin/pulse)
+[![GitHub Issues](https://img.shields.io/github/issues/reqstool/reqstool-python-hatch-plugin?style=for-the-badge&logo=github)](https://github.com/reqstool/reqstool-python-hatch-plugin/issues)
+[![License](https://img.shields.io/github/license/reqstool/reqstool-python-hatch-plugin?style=for-the-badge&logo=opensourceinitiative)](https://opensource.org/license/mit/)
+[![Build](https://img.shields.io/github/actions/workflow/status/reqstool/reqstool-python-hatch-plugin/build.yml?style=for-the-badge&logo=github)](https://github.com/reqstool/reqstool-python-hatch-plugin/actions/workflows/build.yml)
+[![Static Badge](https://img.shields.io/badge/Documentation-blue?style=for-the-badge&link=docs)](https://reqstool.github.io/reqstool-python-hatch-plugin/reqstool-python-hatch-plugin/0.0.2/index.html)
 
 
 
