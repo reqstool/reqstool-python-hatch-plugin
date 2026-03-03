@@ -1,0 +1,25 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[project]
+name = "mypackage"
+version = "0.1.0"
+description = "Minimal test project for reqstool-python-hatch-plugin"
+requires-python = ">=3.13"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "docs/reqstool"]
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
+pythonpath = ["src"]
+testpaths = ["tests"]
+junit_family = "xunit2"
+
+[tool.hatch.build.hooks.reqstool]
+dependencies = ["reqstool-python-hatch-plugin"]
+sources = ["src", "tests"]
+test_results = ["build/**/junit.xml"]
+dataset_directory = "docs/reqstool"
+output_directory = "build/reqstool"
