@@ -33,12 +33,22 @@ The plugin can be configured through the `pyproject.toml` file. Configure plugin
 
 ```toml
 [tool.hatch.build.hooks.reqstool]
-dependencies = ["reqstool-python-hatch-plugin == <version>"]
 sources = ["src", "tests"]
+test_results = "build/**/junit.xml"
 dataset_directory = "docs/reqstool"
 output_directory = "build/reqstool"
-test_results = ["build/**/junit.xml"]
 ```
+
+And under `requires` in `[build-system]´ you need to add the plugin with the version, see example:
+
+```toml
+[build-system]
+requires = [
+  "hatchling",
+  "reqstool-python-hatch-plugin==<version>",
+]
+```
+
 
 It specifies that the reqstool-python-hatch-plugin is a dependency for the build process, and it should be of a specific version. 
 
