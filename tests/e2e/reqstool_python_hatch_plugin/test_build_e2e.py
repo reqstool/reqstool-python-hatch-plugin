@@ -61,9 +61,10 @@ def test_hatch_build_sdist_contains_reqstool_artifacts():
 
         with tarfile.open(tarballs[-1]) as tf:
             names = tf.getnames()
-
-        for expected in EXPECTED_IN_TARBALL:
-            assert any(expected in n for n in names), f"{expected!r} missing from {tarballs[-1].name};\ngot: {names}"
+            for expected in EXPECTED_IN_TARBALL:
+                assert any(
+                    expected in n for n in names
+                ), f"{expected!r} missing from {tarballs[-1].name};\ngot: {names}"
 
         # annotations.yml is generated on disk (not bundled in the tarball)
         annotations_file = tmp_project / "build" / "reqstool" / "annotations.yml"
