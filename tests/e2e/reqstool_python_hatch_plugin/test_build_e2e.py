@@ -1,7 +1,6 @@
 # Copyright © LFV
 import shutil
 import subprocess
-import sys
 import tarfile
 import tempfile
 import venv
