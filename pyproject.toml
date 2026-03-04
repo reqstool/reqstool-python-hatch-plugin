@@ -27,7 +27,7 @@ Source = "https://github.com/reqstool/reqstool-python-hatch-plugin.git"
 Documentation = "https://github.com/reqstool/reqstool-python-hatch-plugin.git"
 
 [project.entry-points.hatch]
-decorators = "reqstool_python_hatch_plugin.hooks"
+reqstool = "reqstool_python_hatch_plugin.hooks"
 
 [tool.hatch.version]
 source = "vcs"
@@ -52,15 +52,13 @@ addopts = [
     "-s",
     "--import-mode=importlib",
     "--log-cli-level=DEBUG",
-    '-m not slow or not integration',
 ]
 pythonpath = [".", "src", "tests"]
 testpaths = ["tests"]
 norecursedirs = ["tests/fixtures"]
 markers = [
-    "flaky: tests that can randomly fail through no change to the code",
-    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
     "integration: tests that require external resources",
+    "e2e: end-to-end tests that run the full pipeline locally",
 ]
 
 [tool.black]
