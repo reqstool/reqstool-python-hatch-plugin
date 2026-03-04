@@ -17,8 +17,9 @@ To use the Reqstool Hatch Plugin, follow these steps:
 
 - Update your project dependencies in the `pyproject.toml` file and 
 ensure that the Reqstool Decorators' dependency is listed as follows;
-``` 
-dependencies = ["reqstool-python-decorators == <version>"]
+
+```toml
+dependencies = ["reqstool-python-decorators==<version>"]
 ```
 
 When you declare this in the pyproject.toml file, you are specifying the required versions for the dependency of the Reqstool Decorators. This ensures that the correct version of the dependencies are used when installing and running your project.
@@ -33,12 +34,22 @@ The plugin can be configured through the `pyproject.toml` file. Configure plugin
 
 ```toml
 [tool.hatch.build.hooks.reqstool]
-dependencies = ["reqstool-python-hatch-plugin == <version>"]
 sources = ["src", "tests"]
+test_results = "build/**/junit.xml"
 dataset_directory = "docs/reqstool"
 output_directory = "build/reqstool"
-test_results = ["build/**/junit.xml"]
 ```
+
+And under `requires` in `[build-system]` you need to add the plugin with the version, see example;
+
+```toml
+[build-system]
+requires = [
+  "hatchling",
+  "reqstool-python-hatch-plugin==<version>",
+]
+```
+
 
 It specifies that the reqstool-python-hatch-plugin is a dependency for the build process, and it should be of a specific version. 
 
