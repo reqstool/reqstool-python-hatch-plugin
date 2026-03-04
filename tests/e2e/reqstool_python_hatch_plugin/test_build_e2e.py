@@ -71,3 +71,6 @@ def test_hatch_build_sdist_contains_reqstool_artifacts():
         # annotations.yml is generated on disk (not bundled in the tarball)
         annotations_file = tmp_project / "build" / "reqstool" / "annotations.yml"
         assert annotations_file.exists(), f"annotations.yml not generated at {annotations_file}"
+        annotations_content = annotations_file.read_text()
+        assert "REQ_001" in annotations_content, "annotations.yml missing REQ_001"
+        assert "SVC_001" in annotations_content, "annotations.yml missing SVC_001"
