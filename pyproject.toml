@@ -16,7 +16,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
 ]
 dependencies = [
-    "reqstool-python-decorators==0.0.9",
+    "reqstool-python-decorators==0.1.0",
     "ruamel.yaml==0.19.1",
     "hatchling==1.29.0",
 ]
