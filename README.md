@@ -1,46 +1,16 @@
-
 [![Commit Activity](https://img.shields.io/github/commit-activity/m/reqstool/reqstool-python-hatch-plugin?label=commits&style=for-the-badge)](https://github.com/reqstool/reqstool-python-hatch-plugin/pulse)
 [![GitHub Issues](https://img.shields.io/github/issues/reqstool/reqstool-python-hatch-plugin?style=for-the-badge&logo=github)](https://github.com/reqstool/reqstool-python-hatch-plugin/issues)
 [![License](https://img.shields.io/github/license/reqstool/reqstool-python-hatch-plugin?style=for-the-badge&logo=opensourceinitiative)](https://opensource.org/license/mit/)
 [![Build](https://img.shields.io/github/actions/workflow/status/reqstool/reqstool-python-hatch-plugin/build.yml?style=for-the-badge&logo=github)](https://github.com/reqstool/reqstool-python-hatch-plugin/actions/workflows/build.yml)
-[![Static Badge](https://img.shields.io/badge/Documentation-blue?style=for-the-badge&link=docs)](https://reqstool.github.io/reqstool-python-hatch-plugin/reqstool-python-hatch-plugin/0.0.2/index.html)
+[![Documentation](https://img.shields.io/badge/Documentation-blue?style=for-the-badge&link=docs)](https://reqstool.github.io)
 
+# Reqstool Python Hatch Plugin
 
-
-## Description
-
-This documentation provides information on how to use the Reqstool Hatch Plugin. The plugin is designed to be used with the Hatch build tool and facilitates the integration of the Reqstool Decorators in your project.
+Hatch build hook plugin for [reqstool](https://github.com/reqstool/reqstool-client) that collects decorated code and generates `annotations.yml` during `hatch build`.
 
 ## Installation
 
-To use the Reqstool Hatch Plugin, follow these steps:
-
-- Update your project dependencies in the `pyproject.toml` file and 
-ensure that the Reqstool Decorators' dependency is listed as follows;
-
-```toml
-dependencies = ["reqstool-python-decorators==<version>"]
-```
-
-When you declare this in the pyproject.toml file, you are specifying the required versions for the dependency of the Reqstool Decorators. This ensures that the correct version of the dependencies are used when installing and running your project.
-
-
-
-## Usage
-
-### Configuration
-
-The plugin can be configured through the `pyproject.toml` file. Configure plugin in `pyproject.toml`as follows;
-
-```toml
-[tool.hatch.build.hooks.reqstool]
-sources = ["src", "tests"]
-test_results = "build/**/junit.xml"
-dataset_directory = "docs/reqstool"
-output_directory = "build/reqstool"
-```
-
-And under `requires` in `[build-system]` you need to add the plugin with the version, see example;
+Add to your `pyproject.toml`:
 
 ```toml
 [build-system]
@@ -50,7 +20,28 @@ requires = [
 ]
 ```
 
+## Usage
 
-It specifies that the reqstool-python-hatch-plugin is a dependency for the build process, and it should be of a specific version. 
+Configure the plugin in `pyproject.toml`:
 
-Further it defines the paths where the plugin should be applied. In this case, it specifies that the plugin should be applied to files in the src and tests directories. 
+```toml
+[tool.hatch.build.hooks.reqstool]
+sources = ["src", "tests"]
+test_results = "build/**/junit.xml"
+dataset_directory = "docs/reqstool"
+output_directory = "build/reqstool"
+```
+
+The plugin uses [reqstool-python-decorators](https://github.com/reqstool/reqstool-python-decorators) for processing.
+
+## Documentation
+
+Full documentation can be found [here](https://reqstool.github.io).
+
+## Contributing
+
+See the organization-wide [CONTRIBUTING.md](https://github.com/reqstool/.github/blob/main/CONTRIBUTING.md).
+
+## License
+
+MIT License.
