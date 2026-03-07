@@ -41,4 +41,4 @@ The plugin integrates into the Hatch build process:
 2. The build hook scans `sources` directories for decorated code
 3. An `annotations.yml` is generated in the `output_directory`
 4. A `reqstool_config.yml` is created with paths for the package structure
-5. Reqstool data is included in the built sdist/wheel package
+5. reqstool data is included in the built sdist/wheel package

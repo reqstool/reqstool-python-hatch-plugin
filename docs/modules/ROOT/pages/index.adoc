@@ -1,4 +1,4 @@
-= Reqstool Python Hatch Plugin
+= reqstool Python Hatch Plugin
 
 This Hatch build hook generates annotations and assembles reqstool data during `hatch build`. It collects decorated code using https://github.com/reqstool/reqstool-python-decorators[reqstool-python-decorators] and packages everything for consumption by the reqstool CLI.
 
