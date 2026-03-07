@@ -2,6 +2,8 @@
 
 include::description.adoc[]
 
-include::installation.adoc[]
+include::configuration.adoc[]
+
+include::usage.adoc[]
 
 include::license.adoc[]

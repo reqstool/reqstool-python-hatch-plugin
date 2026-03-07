@@ -1,18 +1,44 @@
 == Usage
 
+=== Basic Usage
 
-=== Configuration
+Add the build hook to your `pyproject.toml`:
 
-The plugin can be configured through the `pyproject.toml` file. Configure plugin in `pyproject.toml`as follows;
-
-```toml
+[source,toml]
+----
 [tool.hatch.build.hooks.reqstool]
-dependencies = ["reqstool-python-hatch-plugin == <version>"]
+dependencies = ["reqstool-python-hatch-plugin"]
 sources = ["src", "tests"]
 test_results = "build/junit.xml"
 dataset_directory = "docs/reqstool"
 output_directory = "build/reqstool"
-```
-It specifies that the reqstool-python-hatch-plugin is a dependency for the build process, and it should be of a specific version. 
+----
 
-Further it defines the paths where the plugin should be applied. In this case, it specifies that the plugin should be applied to files in the src and tests directories. 
+=== Decorator Dependency
+
+To use `@Requirements` and `@SVCs` decorators in your code, add the decorators package as a dependency:
+
+[source,toml]
+----
+[project]
+dependencies = ["reqstool-python-decorators"]
+----
+
+See https://github.com/reqstool/reqstool-python-decorators[reqstool-python-decorators] for decorator usage.
+
+=== Running the Build
+
+[source,bash]
+----
+hatch build
+----
+
+=== Default Lifecycle
+
+The plugin integrates into the Hatch build process:
+
+1. `hatch build` is invoked
+2. The build hook scans `sources` directories for decorated code
+3. An `annotations.yml` is generated in the `output_directory`
+4. A `reqstool_config.yml` is created with paths for the package structure
+5. Reqstool data is included in the built sdist/wheel package
