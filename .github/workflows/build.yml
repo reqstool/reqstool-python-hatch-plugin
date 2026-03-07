@@ -27,7 +27,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: "3.13"
+          python-version: "3.14"
       - name: Install dependencies
         run: pip install hatch
       - name: Build wheel (used by e2e tests via PIP_FIND_LINKS)
