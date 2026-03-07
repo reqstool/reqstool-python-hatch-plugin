@@ -1,0 +1,70 @@
+== Configuration
+
+The plugin is configured in your `pyproject.toml` file under `[tool.hatch.build.hooks.reqstool]`.
+
+=== Complete Configuration Example
+
+[source,toml]
+----
+[tool.hatch.build.hooks.reqstool]
+# Build hook dependency
+dependencies = ["reqstool-python-hatch-plugin"]
+
+# Directories to scan for decorators
+# Default: ["src", "tests"]
+sources = ["src", "tests"]
+
+# Test result file pattern(s)
+# Default: "build/junit.xml"
+test_results = "build/junit.xml"
+
+# Directory containing requirements.yml and optional files
+# Default: "docs/reqstool"
+dataset_directory = "docs/reqstool"
+
+# Output directory for generated annotations
+# Default: "build/reqstool"
+output_directory = "build/reqstool"
+----
+
+=== Configuration Parameters
+
+==== sources
+
+Directories to scan for `@Requirements` and `@SVCs` decorators.
+Defaults to `["src", "tests"]`.
+
+[source,toml]
+----
+sources = ["src", "tests"]
+----
+
+==== test_results
+
+Path or pattern for test result files (JUnit XML).
+Defaults to `"build/junit.xml"`.
+
+[source,toml]
+----
+test_results = "build/junit.xml"
+----
+
+==== dataset_directory
+
+Directory containing `requirements.yml` and optional reqstool files (`software_verification_cases.yml`, `manual_verification_results.yml`).
+Defaults to `"docs/reqstool"`.
+
+[source,toml]
+----
+dataset_directory = "docs/reqstool"
+----
+
+==== output_directory
+
+Output directory for the generated `annotations.yml`.
+Defaults to `"build/reqstool"`.
+
+[source,toml]
+----
+output_directory = "build/reqstool"
+----

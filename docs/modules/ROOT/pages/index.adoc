@@ -1,7 +1,57 @@
-= Reqstool Python Hatch Plugin
+= reqstool Python Hatch Plugin
 
-include::description.adoc[]
+This Hatch build hook generates annotations and assembles reqstool data during `hatch build`. It collects decorated code using https://github.com/reqstool/reqstool-python-decorators[reqstool-python-decorators] and packages everything for consumption by the reqstool CLI.
 
-include::installation.adoc[]
+== Features
 
-include::license.adoc[]
+* *Hatch integration*: Runs automatically as a build hook during `hatch build`
+* *Combines annotations*: Collects `@Requirements` and `@SVCs` decorators from source and test code
+* *Assembles package data*: Includes requirements, test results, and annotations in the built package
+* *Generates config*: Creates a `reqstool_config.yml` with correct paths for the package structure
+
+== Quick Start
+
+== Add the Plugin
+
+Add the build hook dependency to your `pyproject.toml`:
+
+[source,toml]
+----
+[tool.hatch.build.hooks.reqstool]
+dependencies = ["reqstool-python-hatch-plugin"]
+----
+
+== Default Behavior
+
+The plugin automatically:
+
+1. Runs during `hatch build`
+2. Scans source and test directories for `@Requirements` and `@SVCs` decorators
+3. Generates an `annotations.yml` file in `build/reqstool/`
+4. Creates a `reqstool_config.yml` with paths for the package structure
+5. Includes reqstool data in the built package (sdist/wheel)
+
+== Minimal Setup
+
+[source]
+----
+my-project/
+├── pyproject.toml
+├── docs/
+│   └── reqstool/
+│       └── requirements.yml  (mandatory)
+├── src/
+└── tests/
+----
+
+Run `hatch build` and the annotations will be generated automatically.
+
+== Prerequisites
+
+* Python 3.13+
+* https://hatch.pypa.io/[Hatch]
+* https://github.com/reqstool/reqstool-python-decorators[reqstool-python-decorators] as a project dependency
+
+== License
+
+MIT License.
