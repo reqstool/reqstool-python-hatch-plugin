@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs", "build", "twine"]
+requires = ["hatchling==1.29.0", "hatch-vcs==0.5.0", "build==1.4.0", "twine==6.2.0"]
 build-backend = "hatchling.build"
 
 [project]
@@ -18,7 +18,7 @@ classifiers = [
 dependencies = [
     "reqstool-python-decorators==0.0.9",
     "ruamel.yaml==0.19.1",
-    "hatchling>=1.20.0",
+    "hatchling==1.29.0",
 ]
 
 [project.urls]
