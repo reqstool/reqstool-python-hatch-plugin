@@ -18,7 +18,7 @@ classifiers = [
 dependencies = [
     "reqstool-python-decorators==0.1.0",
     "ruamel.yaml==0.19.1",
-    "hatchling==1.29.0",
+    "hatchling==1.30.1",
 ]
 
 [project.urls]
