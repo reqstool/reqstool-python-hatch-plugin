@@ -11,6 +11,9 @@ on:
       - reopened
       - synchronize
 
+permissions:
+  contents: read
+
 jobs:
   linting:
     name: Reuse linting job
@@ -19,6 +22,10 @@ jobs:
   build:
     needs: linting
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        reqstool-source: [pypi, main]
     steps:
       - name: Check out source repository
         uses: actions/checkout@v6
@@ -36,9 +43,31 @@ jobs:
         run: hatch run dev:pytest --junitxml=build/junit.xml --cov=reqstool_python_hatch_plugin --cov-report=xml:build/coverage.xml
       - name: Build project
         run: hatch build
+      - name: Self-apply own decorators to own src/tests
+        run: hatch run dev:python scripts/generate_annotations.py
+      - name: Install reqstool
+        uses: reqstool/.github/.github/actions/install-reqstool@74cc3ac55a476258898db82c69a78eeaabb2fcbc # main 2026-06-24
+        with:
+          reqstool-source: ${{ matrix.reqstool-source }}
+      - name: Validate reqstool spec completeness
+        # not yet available in the latest PyPI release; supplementary to (not a
+        # replacement for) the `reqstool status --fail-if-incomplete` gate below, which
+        # is the actual required check on the pypi leg
+        if: matrix.reqstool-source == 'main'
+        uses: reqstool/.github/.github/actions/validate-reqstool@74cc3ac55a476258898db82c69a78eeaabb2fcbc # main 2026-06-24
+      - name: Run reqstool status
+        # Required gate on both matrix legs -- fails the build unless every
+        # requirement is implemented and verified.
+        uses: reqstool/.github/.github/actions/reqstool-status@74cc3ac55a476258898db82c69a78eeaabb2fcbc # main 2026-06-24
+        with:
+          fail-if-incomplete: "true"
       # Upload artifacts for later use
       - name: Upload Artifacts
+        if: matrix.reqstool-source == 'pypi'
         uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
+
+  validate-openspec:
+    uses: reqstool/.github/.github/workflows/common-validate-openspec.yml@74cc3ac55a476258898db82c69a78eeaabb2fcbc # main 2026-06-24

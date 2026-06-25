@@ -7,6 +7,7 @@ import venv
 from pathlib import Path
 
 import pytest
+from reqstool_python_decorators.decorators.decorators import SVCs
 
 FIXTURE_DIR = Path(__file__).parents[2] / "fixtures" / "test_project"
 DIST_DIR = Path(__file__).parents[3] / "dist"
@@ -22,6 +23,7 @@ EXPECTED_IN_TARBALL = [
 
 
 @pytest.mark.e2e
+@SVCs("SVC_HATCH_PLUGIN_001", "SVC_HATCH_PLUGIN_002")
 def test_hatch_build_sdist_contains_reqstool_artifacts():
     """hatch build (sdist) triggers the reqstool hook and bundles all artifacts.
 
