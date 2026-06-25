@@ -45,6 +45,9 @@ jobs:
         run: hatch build
       - name: Self-apply own decorators to own src/tests
         run: hatch run dev:python scripts/generate_annotations.py
+      # NOTE: all reqstool/.github refs below are pinned to the same commit -- keep
+      # these 4 in sync when bumping (install-reqstool, validate-reqstool,
+      # reqstool-status, and the validate-openspec job's workflow ref further down).
       - name: Install reqstool
         uses: reqstool/.github/.github/actions/install-reqstool@74cc3ac55a476258898db82c69a78eeaabb2fcbc # main 2026-06-24
         with:
@@ -52,7 +55,7 @@ jobs:
       - name: Validate reqstool spec completeness
         # not yet available in the latest PyPI release; supplementary to (not a
         # replacement for) the `reqstool status --fail-if-incomplete` gate below, which
-        # is the actual required check on the pypi leg
+        # is the actual required check, run unconditionally on both matrix legs
         if: matrix.reqstool-source == 'main'
         uses: reqstool/.github/.github/actions/validate-reqstool@74cc3ac55a476258898db82c69a78eeaabb2fcbc # main 2026-06-24
       - name: Run reqstool status

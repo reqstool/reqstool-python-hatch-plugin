@@ -101,6 +101,7 @@ __pycache__/
 # Distribution / packaging
 .Python
 build/
+!tests/fixtures/test_project/build/
 develop-eggs/
 dist/
 downloads/
