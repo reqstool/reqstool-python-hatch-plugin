@@ -55,7 +55,8 @@ jobs:
         with:
           python-version: "3.13"
       - name: Install dependencies
-        run: pip install hatch
+        # renovate: datasource=pypi depName=hatch
+        run: pip install hatch==1.18.0
       - name: Build wheel (used by e2e tests via PIP_FIND_LINKS)
         run: hatch build --target wheel
       - name: Run tests
