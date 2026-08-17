@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.009" timestamp="2026-03-03T21:13:14.848434+01:00" hostname="turing"><testcase classname="tests.test_main" name="test_hello" time="0.000" /></testsuite></testsuites>

@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/reqstool/reqstool-client/main/src/reqstool/resources/schemas/v1/requirements.schema.json
+
+metadata:
+  urn: reqstool-python-hatch-plugin
+  variant: microservice
+  title: Reqstool Python Hatch Plugin
+  url: https://github.com/reqstool/reqstool-python-hatch-plugin
+
+requirements:
+  - id: HATCH_PLUGIN_001
+    title: Generate annotations.yml from reqstool decorators during build
+    significance: shall
+    description: >-
+      On `hatch build`, the plugin shall process the configured source
+      directories for `@Requirements`/`@SVCs` decorators and write the
+      result to annotations.yml in the configured output directory, before
+      any build artifact is produced.
+    categories: [functional-suitability]
+    revision: "0.1.0"
+  - id: HATCH_PLUGIN_002
+    title: Bundle reqstool dataset and annotations into the built sdist
+    significance: shall
+    description: >-
+      After a sdist artifact is built, the plugin shall append the
+      project's reqstool dataset (requirements.yml,
+      software_verification_cases.yml, manual_verification_results.yml,
+      when present), the generated annotations.yml, any configured test
+      result files, and a generated reqstool_config.yml directly into the
+      sdist tarball. Non-sdist artifacts (e.g. wheel) are left untouched.
+    categories: [functional-suitability]
+    revision: "0.1.0"

@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 from hatchling.builders.plugin.interface import BuilderInterface
+from reqstool_python_decorators.decorators.decorators import Requirements
 from reqstool_python_decorators.processors.decorator_processor import DecoratorProcessor
 from ruamel.yaml import YAML
 
@@ -51,6 +52,7 @@ class ReqstoolBuildHook(BuildHookInterface):
         super().__init__(*args, **kwargs)
         self.__config_path: Optional[str] = None
 
+    @Requirements("HATCH_PLUGIN_001")
     def initialize(self, version: str, build_data: Dict[str, Any]) -> None:
         """
         Executes custom actions during the build process.
@@ -63,6 +65,7 @@ class ReqstoolBuildHook(BuildHookInterface):
 
         self._create_annotations_file()
 
+    @Requirements("HATCH_PLUGIN_002")
     def finalize(self, version: str, build_data: dict[str, Any], artifact_path: str) -> None:
 
         if artifact_path.endswith(".tar.gz"):
