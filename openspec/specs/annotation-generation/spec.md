@@ -12,4 +12,5 @@ reqstool requirement and SVC IDs only; titles and descriptions are injected at r
 The system SHALL implement HATCH_PLUGIN_001.
 
 #### Scenario: SVC_HATCH_PLUGIN_001
-The system SHALL pass SVC_HATCH_PLUGIN_001.
+- **WHEN** SVC_HATCH_PLUGIN_001 is run
+- **THEN** it passes
