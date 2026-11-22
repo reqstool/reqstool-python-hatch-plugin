@@ -47,14 +47,12 @@ jobs:
     needs: build
     uses: reqstool/.github/.github/workflows/common-reqstool-verify.yml@ci/385-shared-python-build # SPIKE: pin to release SHA
     with:
-      ref: ${{ inputs.ref }}
       build-artifact: ${{ inputs.artifact-name || 'dist' }}-build
 
   smoke:
     needs: build
     uses: reqstool/.github/.github/workflows/python-smoke.yml@ci/385-shared-python-build # SPIKE: pin to release SHA
     with:
-      ref: ${{ inputs.ref }}
       dist-artifact: ${{ inputs.artifact-name || 'dist' }}
       # Unit tests only: the e2e tests build an sdist in a venv via the POSIX
       # path `bin/python`, so they cannot run on Windows (they run on Linux in
