@@ -40,14 +40,8 @@ jobs:
       ref: ${{ inputs.ref }}
       artifact-name: ${{ inputs.artifact-name || 'dist' }}
       # Self-apply own decorators to own src/tests; relies on build/ surviving
-      # `hatch build`. The e2e tests need the wheel in dist/, which the shared
-      # build only produces after the first test run (they skip there), so the
-      # full suite is re-run here and rewrites build/junit.xml with the e2e
-      # results that reqstool status needs for the SVCs.
-      # TODO: drop the re-run once the shared build can build the wheel pre-test.
-      post-test-command: >-
-        hatch run dev:python scripts/generate_annotations.py &&
-        hatch run dev:pytest --junitxml=build/junit.xml
+      # `hatch build`.
+      post-test-command: hatch run dev:python scripts/generate_annotations.py
 
   reqstool:
     needs: build
