@@ -39,8 +39,6 @@ jobs:
       coverage-source: reqstool_python_hatch_plugin
       ref: ${{ inputs.ref }}
       artifact-name: ${{ inputs.artifact-name || 'dist' }}
-      # Self-apply own decorators to own src/tests; relies on build/ surviving
-      # `hatch build`.
       post-test-command: hatch run dev:python scripts/generate_annotations.py
 
   reqstool:
@@ -54,16 +52,12 @@ jobs:
     uses: reqstool/.github/.github/workflows/python-smoke.yml@193abb8e7ad36805d5fe7695f8fa5e0a4b6f8da7 # 1.3.0
     with:
       dist-artifact: ${{ inputs.artifact-name || 'dist' }}
-      # Unit tests only: the e2e tests build an sdist in a venv via the POSIX
-      # path `bin/python`, so they cannot run on Windows (they run on Linux in
-      # the build job).
       requirements: pytest==8.4.1
       command: pytest tests/unit
 
   validate-openspec:
     uses: reqstool/.github/.github/workflows/common-validate-openspec.yml@6fc8d3e3d4c3fdf7a83cb7b7a274e4761486ca71 # 1.2.1
 
-  # Single stable required check: survives job renames and matrix changes.
   ci:
     if: ${{ always() }}
     needs: [lint, build, reqstool, smoke, validate-openspec]
